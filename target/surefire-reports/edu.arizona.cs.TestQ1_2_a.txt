@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: edu.arizona.cs.TestQ1_2_a
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.056 s <<< FAILURE! - in edu.arizona.cs.TestQ1_2_a
+testDocsAndScores  Time elapsed: 0.048 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <2> but was: <3>
+	at edu.arizona.cs.TestQ1_2_a.testDocsAndScores(TestQ1_2_a.java:22)
+
