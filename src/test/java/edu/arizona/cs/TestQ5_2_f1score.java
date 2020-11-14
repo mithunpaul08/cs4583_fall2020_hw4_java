@@ -1,24 +1,21 @@
 package edu.arizona.cs;
 
-import java.util.ArrayList;
 import java.util.List;
-import com.sun.tools.javac.util.Assert;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.apache.lucene.document.Document;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 
-public class TestQ1_2_b {
+public class TestQ5_2_f1score {
     @Test
     public void testDocsAndScores() {
         String inputFileFullPath = "input.txt";
         QueryEngine objQueryEngine = new QueryEngine(inputFileFullPath);
         try {
             String[] common_query = {"information", "retrieval"};
-            List<ResultClass> ans1_2_b = objQueryEngine.runQ1_2_b(common_query);
-            if(ans1_2_b !=null) {
-                assertEquals(ans1_2_b.size(), 0);
-            }
+            double ans = objQueryEngine.runQ5_2_f1score(common_query);
+            assertThat("ans",ans>0.8);
         } catch (java.io.FileNotFoundException ex) {
             System.out.println(ex.getMessage());
         } catch (java.io.IOException ex) {

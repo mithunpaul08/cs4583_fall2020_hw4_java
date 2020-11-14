@@ -1,10 +1,11 @@
 package edu.arizona.cs;
-
 import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestQ1_2_c {
+
+
+public class TestQ4_3_without_smoothing {
 
     @Test
     public void testDocsAndScores() {
@@ -13,15 +14,21 @@ public class TestQ1_2_c {
 
         QueryEngine objQueryEngine = new QueryEngine(inputFileFullPath);
         try {
+
             String[] common_query = {"information", "retrieval"};
-            List<ResultClass> ans1_2_c = objQueryEngine.runQ1_2_c(common_query);
-            String[] doc_names_q1_2_c = {"Doc1"};
-            int counter3 = 0;
-            assertEquals(1, ans1_2_c.size());
-            for (ResultClass docs : ans1_2_c) {
-                assertEquals(doc_names_q1_2_c[counter3], docs.DocName.get("docid"));
-                counter3 = counter3 + 1;
+
+            List<ResultClass> ans = objQueryEngine.runQ4_3_without_smoothing(common_query);
+            String[] doc_names_q13a = {"Doc1", "Doc2"};
+            assertEquals((doc_names_q13a.length) , ans.size());
+            int counter2 = 0;
+            for (ResultClass docs : ans) {
+
+                assertEquals(doc_names_q13a[counter2], docs.DocName.get("docid"));
+                counter2 = counter2 + 1;
             }
+
+
+
         }
         catch ( java.io.FileNotFoundException ex)
         {

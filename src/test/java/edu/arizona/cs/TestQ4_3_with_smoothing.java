@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class TestQ1_1 {
+public class TestQ4_3_with_smoothing {
 
     @Test
     public void testDocsAndScores() {
@@ -13,11 +13,11 @@ public class TestQ1_1 {
         QueryEngine objQueryEngine = new QueryEngine(inputFileFullPath);
         try {
             String[] common_query = {"information", "retrieval"};
-            List<ResultClass> ans1_1= objQueryEngine.runQ1_1(common_query);
-            String[] doc_names_q1 = {"Doc1", "Doc2"};
+            List<ResultClass> ans= objQueryEngine.runQ4_3_with_smoothing(common_query);
+            String[] doc_names_q1 = {"Doc1", "Doc2","Doc3","Doc4"};
             int counter1 = 0;
-            assertEquals(ans1_1.size(),(doc_names_q1.length) ) ;
-            for (ResultClass docs : ans1_1) {
+            assertEquals(ans.size(),(doc_names_q1.length) ) ;
+            for (ResultClass docs : ans) {
                 assertEquals(doc_names_q1[counter1], docs.DocName.get("docid"));
                 counter1 = counter1 + 1;
             }
