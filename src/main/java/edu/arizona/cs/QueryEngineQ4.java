@@ -1,107 +1,88 @@
 package edu.arizona.cs;
-
-import org.apache.lucene.document.Document;
-import org.apache.lucene.document.Field;
-import org.apache.lucene.document.StringField;
-import org.apache.lucene.document.TextField;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
+import edu.arizona.cs.Document;
 
-public class QueryEngine {
-    boolean indexExists=false;
+public class QueryEngineQ4 {
     String inputFilePath ="";
-
-    public QueryEngine(String inputFile){
+    public QueryEngineQ4(String inputFile){
         inputFilePath =inputFile;
-        buildIndex();
+        buildModel();
     }
 
-    private void buildIndex() {
+    /*
+     * "This method computes the parameters of the language model".
+     *
+     */
+    private void buildModel() {
         //Get file from resources folder
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(inputFilePath).getFile());
-
-    //uncomment this if you want to print the entries in the input file
-    // try (Scanner inputScanner = new Scanner(file)) {
-    //            while (inputScanner.hasNextLine()) {
-    //                System.out.println(inputScanner.nextLine());
-    //            }
-    //            inputScanner.close();
-    //        } catch (IOException e) {
-    //            e.printStackTrace();
-    //        }
-        indexExists = true;
     }
 
     public static void main(String[] args ) {
         try {
-            String fileName = "input.txt";
-            System.out.println("********Welcome to  Homework 3!");
-            String[] query = {"information", "retrieval"};
-            QueryEngine objQueryEngine = new QueryEngine(fileName);
+            /*add your code here*/
         }
         catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
+    /*
+     * List of documents that you return for runQ4_3_with_smoothing
+     * must be sorted in the descending order of scores.
+     *
+     */
 
     public List<ResultClass> runQ4_3_with_smoothing(String[] query) throws java.io.FileNotFoundException {
-        if(!indexExists) {
-            buildIndex();
-        }
+        /*this is just dummy code. add your code here*/
         List<ResultClass>  ans=new ArrayList<ResultClass>();
         ans =returnDummyResults(4);
         return ans;
     }
-
+    /*
+     * List of documents that you return for runQ4_3_without_smoothing
+     * must be sorted in descending order of scores.
+     * Even documents with score=0 must be returned.
+     *
+     */
     public List<ResultClass> runQ4_3_without_smoothing(String[] query) throws java.io.FileNotFoundException {
-        if (!indexExists) {
-            buildIndex();
-        }
+        /*this is just dummy code. add your code here*/
         List<ResultClass> ans = new ArrayList<ResultClass>();
         ans = returnDummyResultsNoSmoothing(4);
         return ans;
     }
 
-    public double runQ5_2_f1score(String[] query) throws java.io.FileNotFoundException {
-        if(!indexExists) {
-            buildIndex();
-        }
-      double ans =0.9;
-        return ans;
-    }
-
+    /*
+     * Dummy function and dummy results provided for skeletal purposes.
+     * You shouldn't be returning these finally.
+     *
+     */
     private  List<ResultClass> returnDummyResults(int maxNoOfDocs) {
 
         List<ResultClass> doc_score_list = new ArrayList<ResultClass>();
             for (int i = 0; i < maxNoOfDocs; ++i) {
-                Document doc = new Document();
-                doc.add(new TextField("title", "", Field.Store.YES));
-                doc.add(new StringField("docid", "Doc"+Integer.toString(i+1), Field.Store.YES));
+                Document doc=new Document("Doc"+(i+1));
                 ResultClass objResultClass= new ResultClass();
                 objResultClass.DocName =doc;
-                objResultClass.docScore=1-(i*0.1);
+                objResultClass.docScore=1+(i*0.1);
                 doc_score_list.add(objResultClass);
             }
-
         return doc_score_list;
     }
-
+    /*
+     * Dummy function and dummy results provided for skeletal purposes.
+     * You shouldn't be returning these finally.
+     *
+     */
     private  List<ResultClass> returnDummyResultsNoSmoothing(int maxNoOfDocs) {
-
         List<ResultClass> doc_score_list = new ArrayList<ResultClass>();
         for (int i = 0; i < maxNoOfDocs; ++i) {
-            Document doc = new Document();
-            doc.add(new TextField("title", "", Field.Store.YES));
-            doc.add(new StringField("docid", "Doc"+Integer.toString(i+1), Field.Store.YES));
+            Document doc=new Document("Doc"+(i+1));
             ResultClass objResultClass= new ResultClass();
             objResultClass.DocName =doc;
-
             doc_score_list.add(objResultClass);
-
             switch (i){
                 case(0):
                     objResultClass.docScore=0.2;
@@ -110,14 +91,13 @@ public class QueryEngine {
                     objResultClass.docScore=0.1;
                     break;
                 case(2):
-                    objResultClass.docScore=0;
+                    objResultClass.docScore=1;
                     break;
                 case(3):
-                    objResultClass.docScore=0;
+                    objResultClass.docScore=1;
                     break;
             }
         }
-
         return doc_score_list;
     }
 

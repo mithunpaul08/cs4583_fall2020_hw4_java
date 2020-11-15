@@ -1,2 +1,5 @@
-edu/arizona/cs/QueryEngine.class
+edu/arizona/cs/Document.class
 edu/arizona/cs/ResultClass.class
+edu/arizona/cs/ClassifierResults.class
+edu/arizona/cs/QueryEngineQ4.class
+edu/arizona/cs/QueryEngineQ5.class
