@@ -24,14 +24,15 @@ public class QueryEngine {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(inputFilePath).getFile());
 
-        try (Scanner inputScanner = new Scanner(file)) {
-            while (inputScanner.hasNextLine()) {
-                System.out.println(inputScanner.nextLine());
-            }
-            inputScanner.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//uncomment this if you want to print the entries in the input file
+// try (Scanner inputScanner = new Scanner(file)) {
+//            while (inputScanner.hasNextLine()) {
+//                System.out.println(inputScanner.nextLine());
+//            }
+//            inputScanner.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         indexExists = true;
     }
 
@@ -47,7 +48,7 @@ public class QueryEngine {
         }
     }
 
-    public List<ResultClass> runQ4_3_with_smoothing(String[] query) throws java.io.FileNotFoundException,java.io.IOException {
+    public List<ResultClass> runQ4_3_with_smoothing(String[] query) throws java.io.FileNotFoundException {
         if(!indexExists) {
             buildIndex();
         }
@@ -56,16 +57,21 @@ public class QueryEngine {
         return ans;
     }
 
-    public List<ResultClass> runQ4_3_without_smoothing(String[] query) throws java.io.FileNotFoundException,java.io.IOException {
+    public List<ResultClass> runQ4_3_without_smoothing(String[] query) throws java.io.FileNotFoundException{
         if(!indexExists) {
             buildIndex();
         }
         List<ResultClass>  ans=new ArrayList<ResultClass>();
-        ans =returnDummyResults(2);
+        ans =returnDummyResultsNoSmoothing(4);
+for(ResultClass docs : ans)
+        {
+            System.out.println("value of docscore is");
+            System.out.println(docs.docScore);
+        }
         return ans;
     }
 
-    public double runQ5_2_f1score(String[] query) throws java.io.FileNotFoundException,java.io.IOException {
+    public double runQ5_2_f1score(String[] query) throws java.io.FileNotFoundException {
         if(!indexExists) {
             buildIndex();
         }
@@ -83,8 +89,40 @@ public class QueryEngine {
                 doc.add(new StringField("docid", "Doc"+Integer.toString(i+1), Field.Store.YES));
                 ResultClass objResultClass= new ResultClass();
                 objResultClass.DocName =doc;
+                objResultClass.docScore=1-(i*0.1);
                 doc_score_list.add(objResultClass);
             }
+
+        return doc_score_list;
+    }
+
+    private  List<ResultClass> returnDummyResultsNoSmoothing(int maxNoOfDocs) {
+
+        List<ResultClass> doc_score_list = new ArrayList<ResultClass>();
+        for (int i = 0; i < maxNoOfDocs; ++i) {
+            Document doc = new Document();
+            doc.add(new TextField("title", "", Field.Store.YES));
+            doc.add(new StringField("docid", "Doc"+Integer.toString(i+1), Field.Store.YES));
+            ResultClass objResultClass= new ResultClass();
+            objResultClass.DocName =doc;
+
+            doc_score_list.add(objResultClass);
+
+            switch (i){
+                case(0):
+                    objResultClass.docScore=0.2;
+                    break;
+                case(1):
+                    objResultClass.docScore=0.1;
+                    break;
+                case(2):
+                    objResultClass.docScore=0;
+                    break;
+                case(3):
+                    objResultClass.docScore=0;
+                    break;
+            }
+        }
 
         return doc_score_list;
     }
