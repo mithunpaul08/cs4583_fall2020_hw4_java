@@ -24,15 +24,15 @@ public class QueryEngine {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource(inputFilePath).getFile());
 
-//uncomment this if you want to print the entries in the input file
-// try (Scanner inputScanner = new Scanner(file)) {
-//            while (inputScanner.hasNextLine()) {
-//                System.out.println(inputScanner.nextLine());
-//            }
-//            inputScanner.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    //uncomment this if you want to print the entries in the input file
+    // try (Scanner inputScanner = new Scanner(file)) {
+    //            while (inputScanner.hasNextLine()) {
+    //                System.out.println(inputScanner.nextLine());
+    //            }
+    //            inputScanner.close();
+    //        } catch (IOException e) {
+    //            e.printStackTrace();
+    //        }
         indexExists = true;
     }
 
@@ -57,17 +57,12 @@ public class QueryEngine {
         return ans;
     }
 
-    public List<ResultClass> runQ4_3_without_smoothing(String[] query) throws java.io.FileNotFoundException{
-        if(!indexExists) {
+    public List<ResultClass> runQ4_3_without_smoothing(String[] query) throws java.io.FileNotFoundException {
+        if (!indexExists) {
             buildIndex();
         }
-        List<ResultClass>  ans=new ArrayList<ResultClass>();
-        ans =returnDummyResultsNoSmoothing(4);
-for(ResultClass docs : ans)
-        {
-            System.out.println("value of docscore is");
-            System.out.println(docs.docScore);
-        }
+        List<ResultClass> ans = new ArrayList<ResultClass>();
+        ans = returnDummyResultsNoSmoothing(4);
         return ans;
     }
 
@@ -75,7 +70,6 @@ for(ResultClass docs : ans)
         if(!indexExists) {
             buildIndex();
         }
-
       double ans =0.9;
         return ans;
     }
