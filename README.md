@@ -27,7 +27,7 @@ just created. Your command must be similar to :
 
 # Write your code
 
-You will implement one function each for each of the programming sub qns, Eg:`runQ1_1()` inside 
+You will implement one function each for each of the programming sub qns, Eg:`runQ4_3_with_smoothing()` inside 
 the class `QueryEngine`. These functions should return the documents as asked in the question as a List of `ResultClass`. 
 
 Also, you **should not edit** these files:
@@ -69,7 +69,7 @@ Note: doing `mvn clean` from time to time is a good habit
 
 # Submit your code
 
-As you are working on the code, you should regularly `git commit` to save your
+As you are working on the code, you should regularly do `git commit` to save your
 current changes locally and `git push` to push all saved changes to the remote
 repository on GitHub.
 
@@ -98,8 +98,9 @@ Also note that if you change your code after raising a pull request, the changes
 
 Your instructor will grade the code off this pull request. 
 Pull requests submitted after the deadline won’t be considered.
-If you have raised a pull request, then you don't have to submit the code in D2l.
-However do note that you still have to submit the answers to the other written questions in D2l. 
+If you have raised a pull request, then you don't have to submit the code again in D2L.
+However do note that you still have to submit the answers to the other written part of all questions in gradescope
+(refer gradescope submission instructions on piazza). 
 # Grading
 
 
@@ -109,4 +110,10 @@ Assignments that pass all, and with the corresponding code implementing the corr
 possible points.
 
 To get the remaining of the points, your code will be checked for things like readability and code quality.
-***Please note that this time on there will be a penalty for not following all instructions. Especially `do not merge the pull request`.***
+
+Please note that there will be a penalty for not following all instructions. 
+Especially: 
+- for not having a `dev` branch.
+- not raising a pull request against `main` branch.
+- `do not merge the pull request`.
+- etc
