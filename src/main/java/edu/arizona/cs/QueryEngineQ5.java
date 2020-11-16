@@ -30,8 +30,7 @@ public class QueryEngineQ5 {
         }
     }
     /*
-    * "This method should return the F1 score of the classifier
-    * when run over test partition".
+    * "This method should return the F1 score of the classifier when run over test partition".
     * */
     public double runQ5_2_f1score()  {
         double f1 = 0.7;

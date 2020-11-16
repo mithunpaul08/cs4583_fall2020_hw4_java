@@ -4,6 +4,7 @@ public class Document {
     String docid;
     public Document(String docid_in){
         docid=docid_in;
+
     }
 
     public boolean equals(Document answer) {

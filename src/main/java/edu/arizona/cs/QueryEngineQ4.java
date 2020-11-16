@@ -30,8 +30,7 @@ public class QueryEngineQ4 {
         }
     }
     /*
-     * List of documents that you return for runQ4_3_with_smoothing
-     * must be sorted in the descending order of scores.
+     * List of documents that you return for runQ4_3_with_smoothing must be sorted in the descending order of scores.
      *
      */
 
@@ -42,9 +41,7 @@ public class QueryEngineQ4 {
         return ans;
     }
     /*
-     * List of documents that you return for runQ4_3_without_smoothing
-     * must be sorted in descending order of scores.
-     * Even documents with score=0 must be returned.
+     * List of documents that you return for runQ4_3_without_smoothing must be sorted in descending order of scores. Even documents with score=0 must be returned.
      *
      */
     public List<ResultClass> runQ4_3_without_smoothing(String[] query) throws java.io.FileNotFoundException {
